@@ -21,8 +21,24 @@ class Snail(pygame.sprite.Sprite):
         (dx, dy) = (z * math.cos(angle), z * math.sin(angle))
         return rect.move(dx, dy)
 
-    def clicked():
-        pass
+    def collide(self, player):
+        if self.rect.colliderect(player.rect):
+            print("snail collided with player")
+
+    def is_mouse_over(self):
+        mouse_pos = pygame.mouse.get_pos()
+        if self.rect.collidepoint(mouse_pos):
+            print(
+                f"da mouse hovers over snail at {mouse_pos} and snail rect is {self.rect}"
+            )
+
+    def is_mouse_pressed(self):
+        mouse_pos = pygame.mouse.get_pos()
+        if self.rect.collidepoint(mouse_pos):
+            if pygame.mouse.get_pressed()[0]:
+                print(
+                    f"da mouse click da snail at {mouse_pos} and snail rect is {self.rect}"
+                )
 
     def update(self, window):
         newpos = self.calcnewpos(self.rect)

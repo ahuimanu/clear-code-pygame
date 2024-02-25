@@ -18,6 +18,11 @@ class Player(pygame.sprite.Sprite):
 
     def update(self):
         newpos = self.calcnewpos(self.rect)
+        if self.rect.bottom > 300:
+            self.rect.bottom = 300
+            # self.vector = (self.vector[0], self.vector[1] * -1)
+            newpos = self.calcnewpos(self.rect)
+
         self.rect = newpos
 
     def calcnewpos(self, rect) -> pygame.Rect:
