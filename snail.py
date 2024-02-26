@@ -24,6 +24,10 @@ class Snail(pygame.sprite.Sprite):
     def collide(self, player):
         if self.rect.colliderect(player.rect):
             print("snail collided with player")
+            state = "over"
+            return state
+        else:
+            return "running"
 
     def is_mouse_over(self):
         mouse_pos = pygame.mouse.get_pos()
